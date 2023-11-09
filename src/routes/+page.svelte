@@ -14,9 +14,6 @@
         const res = await supabase.from("tickets").select();
         users = data;
         tickets = res.data;
-        console.log("terror:", res.error);
-        console.log("tata:", res.data);
-        console.log(res);
     }
 
     function toggleUser(name) {
@@ -32,7 +29,6 @@
             const { error } = await supabase
                 .from("tickets")
                 .insert({ name: user.name });
-            console.log(error);
         });
     }
 
@@ -45,7 +41,6 @@
 
     async function runRaffle() {
         if (tickets.length == 0) {
-            console.log("alt pathed");
             await createTickets();
             await loadData();
         }
